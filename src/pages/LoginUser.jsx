@@ -45,10 +45,10 @@ function LoginArea() {
     localStorage.setItem("isAdmin", isAdmin);
   };
   return (
-    <div className="loginarea">
-      <div className="LoginAreaContainer">
+    <div className="">
+      <div className="">
         <form onSubmit={EnviarForms}>
-          <h1 className="Titulo2">Login</h1>
+          <h1 className="">Login</h1>
           <div className="PreencherDados">
             <input type="text" id="username" name="username" required />
             <label htmlFor="username" id="Teste2">
