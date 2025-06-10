@@ -4,6 +4,9 @@ import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import LoginUser from "./pages/LoginUser.jsx";
+import MenuUser from "./pages/MenuUser.jsx";
+import UploadDiary from "./pages/UploadDiary.jsx";
 
 const router = createBrowserRouter([
   {

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -80,3 +81,13 @@ function LoginArea() {
   );
 }
 export default LoginArea;
+=======
+function LoginUser() {
+  return (
+    <div>
+      <h1>LoginUser</h1>
+    </div>
+  );
+}
+export default LoginUser;
+>>>>>>> 97d9ece526c7fc4d57caa90a8978d5b8bb093695
