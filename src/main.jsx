@@ -10,5 +10,8 @@ createRoot(document.getElementById("root")).render();
 ReactDOM.createRoot(root).render(
   <BrowserRouter>
     <App />
+    <LoginUser />
+    <MenuUser />
+    <UploadDiary />
   </BrowserRouter>
 );
