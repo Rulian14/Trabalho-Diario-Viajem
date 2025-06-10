@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 function LoginArea() {
   const navigate = useNavigate();
@@ -49,7 +47,6 @@ function LoginArea() {
   return (
     <div className="loginarea">
       <div className="LoginAreaContainer">
-        <img src={ImagemLogin} alt="Cozinhando" className="HomiCozinhando" />
         <form onSubmit={EnviarForms}>
           <h1 className="Titulo2">Login</h1>
           <div className="PreencherDados">
@@ -81,13 +78,3 @@ function LoginArea() {
   );
 }
 export default LoginArea;
-=======
-function LoginUser() {
-  return (
-    <div>
-      <h1>LoginUser</h1>
-    </div>
-  );
-}
-export default LoginUser;
->>>>>>> 97d9ece526c7fc4d57caa90a8978d5b8bb093695
