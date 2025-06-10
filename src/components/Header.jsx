@@ -1,11 +1,13 @@
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const navigate = useNavigate();
+
   return (
     <div className="">
       <button
         className="border-2 p-2 rounded-md"
-        onClick={Navigate("/LoginUser")}
+        onClick={() => navigate("/LoginUser")}
       >
         Login
       </button>
@@ -13,3 +15,4 @@ function Header() {
   );
 }
 export default Header;
+
