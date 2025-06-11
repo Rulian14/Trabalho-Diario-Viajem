@@ -6,7 +6,7 @@ function Header() {
   const navigate = useNavigate();
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-amber-400 h-[110px] shadow-md z-50">
+    <header className="fixed top-0 left-0 w-full bg-slate-700 h-[110px] shadow-md z-50">
       <div className="max-w-screen-xl mx-auto h-full px-4 flex items-center justify-between">
         {/* Logo */}
         <Link to="/MenuUser" className="flex items-center cursor-pointer">
@@ -21,7 +21,7 @@ function Header() {
 
         {/* Ações */}
         <div className="flex flex-col items-end space-y-2">
-          <h2 className="text-lg font-semibold text-black">Olá, visitante</h2>
+          <h2 className="text-lg font-semibold text-white">Olá, visitante</h2>
           <div className="flex space-x-4">
             <button
               className="p-1 rounded-md bg-violet-500 w-[80px] text-white hover:bg-violet-600 transition"
