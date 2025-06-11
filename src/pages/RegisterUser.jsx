@@ -1,4 +1,5 @@
-// src/pages/RegisterUser.jsx
+import Header from "../components/Header";
+import Layout from "../components/Layout";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../utils/AuthContext.jsx";
 import { validarLogin } from "../utils/ValidaçãoFormulario.js";
