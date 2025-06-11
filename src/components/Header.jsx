@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useAuth } from "../utils/AuthContext.jsx"; // importa o hook do Auth
 import HHIconSemFundo from "../assets/HHIconSemFundo.png";
 
 function Header() {
   const navigate = useNavigate();
+  const { user, logout } = useAuth(); // pega o user e logout do contexto
 
   return (
     <header className="fixed top-0 left-0 w-full bg-slate-700 h-[110px] shadow-md z-50">
@@ -21,21 +23,39 @@ function Header() {
 
         {/* Ações */}
         <div className="flex flex-col items-end space-y-2">
-          <h2 className="text-lg font-semibold text-white">Olá, visitante</h2>
-          <div className="flex space-x-4">
-            <button
-              className="p-1 rounded-md bg-violet-500 w-[80px] text-white hover:bg-violet-600 transition"
-              onClick={() => navigate("/LoginUser")}
-            >
-              Login
-            </button>
-            <button
-              className="p-1 rounded-md bg-violet-500 w-[100px] text-white hover:bg-violet-600 transition"
-              onClick={() => navigate("/RegisterUser")}
-            >
-              Registre-se
-            </button>
-          </div>
+          {user ? (
+            <>
+              <h2 className="text-lg font-semibold text-white">
+                Olá, {user.name}
+              </h2>
+              <button
+                className="p-1 rounded-md bg-red-500 w-[80px] text-white hover:bg-red-600 transition"
+                onClick={logout}
+              >
+                Sair
+              </button>
+            </>
+          ) : (
+            <>
+              <h2 className="text-lg font-semibold text-white">
+                Olá, visitante
+              </h2>
+              <div className="flex space-x-4">
+                <button
+                  className="p-1 rounded-md bg-violet-500 w-[80px] text-white hover:bg-violet-600 transition"
+                  onClick={() => navigate("/LoginUser")}
+                >
+                  Login
+                </button>
+                <button
+                  className="p-1 rounded-md bg-violet-500 w-[100px] text-white hover:bg-violet-600 transition"
+                  onClick={() => navigate("/RegisterUser")}
+                >
+                  Registre-se
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </header>
