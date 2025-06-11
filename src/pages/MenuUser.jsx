@@ -1,11 +1,11 @@
-import Header from "../components/Header";
+import Layout from "../components/Layout";
 
 function MenuUser() {
   return (
-    <div>
-      <Header />
-      <h1>MenuUser</h1>
-    </div>
+    <Layout>
+      <h1 className="text-3xl font-bold mb-4">MenuUser</h1>
+      <p>Bem-vindo ao seu menu de usuário!</p>
+    </Layout>
   );
 }
 

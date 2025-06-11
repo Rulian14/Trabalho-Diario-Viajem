@@ -1,8 +1,11 @@
+import Layout from "../components/Layout";
+
 function UploadDiary() {
   return (
     <div>
-      <Header />
-      <h1>UploadDiary</h1>
+      <Layout>
+        <h1>UploadDiary</h1>
+      </Layout>
     </div>
   );
 }
