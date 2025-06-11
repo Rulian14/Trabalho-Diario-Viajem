@@ -1,53 +1,13 @@
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { processarLogin } from "../components/ValidaçãoFormulario";
 
 function LoginArea() {
   const navigate = useNavigate();
 
-  const EnviarForms = (event) => {
-    event.preventDefault();
-    const nome = event.target.username.value;
-    const senha = event.target.password.value;
-    const isAdmin = event.target["LOGAR COMO ADMIN"].checked;
-
-    const SenhaCurta = document.getElementById("Teste");
-    const NomeCurto = document.getElementById("Teste2");
-    const contemNumero = /\d/.test(nome);
-
-    let nomeValido = true;
-    let senhaValida = true;
-
-    if (nome.length < 3 || contemNumero) {
-      NomeCurto.innerHTML = "Nome Invalido";
-      NomeCurto.style.color = "red";
-      nomeValido = false;
-    } else {
-      NomeCurto.innerHTML = "Nome valido";
-      NomeCurto.style.color = "green";
-    }
-    if (senha.length < 8) {
-      SenhaCurta.innerHTML = "Senha muito curta";
-      SenhaCurta.style.color = "red";
-      senhaValida = false;
-    } else {
-      SenhaCurta.innerHTML = "Senha valida";
-      SenhaCurta.style.color = "green";
-    }
-
-    if (!nomeValido || !senhaValida) {
-      return;
-    } else {
-      navigate("/MenuUsuario");
-    }
-
-    localStorage.setItem("nome", nome);
-    sessionStorage.setItem("senha", senha);
-    localStorage.setItem("isAdmin", isAdmin);
-  };
   return (
     <div className="">
       <div className="">
-        <form onSubmit={EnviarForms}>
+        <form onSubmit={(e) => processarLogin(e, navigate)}>
           <h1 className="">Login</h1>
           <div className="PreencherDados">
             <input type="text" id="username" name="username" required />
@@ -65,22 +25,18 @@ function LoginArea() {
             <input
               type="checkbox"
               name="LOGAR COMO ADMIN"
-              id=""
               className="INFERNO"
             />
             ADMIN-Mode
           </div>
           <button type="submit">Login</button>
-          <button
-            onClick={() => {
-              navigate("/RegisterUser");
-            }}
-          >
-            nao tem uma conta? crie aqui
+          <button type="button" onClick={() => navigate("/RegisterUser")}>
+            Não tem uma conta? Crie aqui
           </button>
         </form>
       </div>
     </div>
   );
 }
+
 export default LoginArea;
