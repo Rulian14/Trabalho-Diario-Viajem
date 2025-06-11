@@ -37,7 +37,7 @@ function LoginArea() {
     if (!nomeValido || !senhaValida) {
       return;
     } else {
-      navigate("/Receitas");
+      navigate("/MenuUsuario");
     }
 
     localStorage.setItem("nome", nome);
@@ -71,7 +71,13 @@ function LoginArea() {
             ADMIN-Mode
           </div>
           <button type="submit">Login</button>
-          <a href="">nao tem uma conta? crie aqui</a>
+          <button
+            onClick={() => {
+              navigate("/RegisterUser");
+            }}
+          >
+            nao tem uma conta? crie aqui
+          </button>
         </form>
       </div>
     </div>
