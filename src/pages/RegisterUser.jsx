@@ -7,6 +7,7 @@ import { validarLogin } from "../utils/ValidaçãoFormulario.js";
 function RegisterUser() {
   const navigate = useNavigate();
   const { login } = useAuth();
+  console.log("useAuth():", useAuth());
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,7 +54,7 @@ function RegisterUser() {
           <label id="LabelSenha">Senha</label>
         </div>
         <button type="submit">Criar Conta</button>
-        <button type="button" onClick={() => navigate("/")}>
+        <button type="button" onClick={() => navigate("/LoginUser")}>
           Já tem uma conta? Fazer login
         </button>
       </form>

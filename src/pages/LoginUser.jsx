@@ -31,7 +31,7 @@ function LoginArea() {
 
     // Simula salvar login no contexto e redireciona
     login({ name: nome });
-    navigate("/dashboard"); // ou "/MenuUser", como preferir
+    navigate("/MenuUser"); // ou "/MenuUser", como preferir
   };
 
   return (
