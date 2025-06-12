@@ -7,8 +7,8 @@ function App() {
   return (
     <div>
       <Layout>
-        <div className="h-full bg-slate-600 flex justify-center ">
-          <div className="h-[80vh] w-[850px] flex flex-col">
+        <div className="h-full bg-slate-600 flex justify-center">
+          <div className="min-h-screen w-[850px] flex flex-col">
             <h1 className="text-3xl p-4 font-bold mb-4 text-white">
               Seja Bem-Vindo ao Horizon Hues!
             </h1>

@@ -62,16 +62,16 @@ function Header() {
               </h2>
               <div className="flex space-x-4">
                 <button
-                  className="p-1 rounded-md bg-violet-500 w-[80px] text-white hover:bg-violet-600 transition cursor-pointer"
+                  className="p-1 rounded-md bg-blue-600 w-[80px] text-white hover:bg-blue-700 transition cursor-pointer"
                   onClick={() => navigate("/LoginUser")}
                 >
-                  Login
+                  Entrar
                 </button>
                 <button
-                  className="p-1 rounded-md bg-violet-500 w-[100px] text-white hover:bg-violet-600 transition cursor-pointer"
+                  className="p-1 rounded-md bg-blue-600 w-[100px] text-white hover:bg-blue-700 transition cursor-pointer"
                   onClick={() => navigate("/RegisterUser")}
                 >
-                  SignUp
+                  Inscrever-se
                 </button>
               </div>
             </>

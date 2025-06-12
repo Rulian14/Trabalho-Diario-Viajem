@@ -1,5 +1,4 @@
-import Header from "../components/Header";
-import Layout from "../components/Layout";
+import AuthForm from "../components/AuthForm";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../utils/AuthContext.jsx";
 import { validarLogin } from "../utils/ValidaçãoFormulario.js";
@@ -7,58 +6,40 @@ import { validarLogin } from "../utils/ValidaçãoFormulario.js";
 function RegisterUser() {
   const navigate = useNavigate();
   const { login } = useAuth();
-  console.log("useAuth():", useAuth());
 
-  const handleSubmit = (e) => {
+  const handleRegisterSubmit = (e) => {
     e.preventDefault();
-
     const formData = new FormData(e.target);
     const nome = formData.get("username");
     const senha = formData.get("password");
 
     const resultado = validarLogin(nome, senha);
+    document.getElementById("LabelNome").textContent = resultado.nomeMensagem;
+    document.getElementById("LabelSenha").textContent = resultado.senhaMensagem;
 
-    const labelNome = document.getElementById("LabelNome");
-    const labelSenha = document.getElementById("LabelSenha");
+    document.getElementById("LabelNome").style.color =
+      resultado.nomeMensagem.includes("inválido") ? "red" : "green";
 
-    labelNome.textContent = resultado.nomeMensagem;
-    labelNome.style.color = resultado.nomeMensagem.includes("inválido")
-      ? "red"
-      : "green";
-
-    labelSenha.textContent = resultado.senhaMensagem;
-    labelSenha.style.color = resultado.senhaMensagem.includes("curta")
-      ? "red"
-      : "green";
+    document.getElementById("LabelSenha").style.color =
+      resultado.senhaMensagem.includes("curta") ? "red" : "green";
 
     if (!resultado.valido) return;
 
-    // Aqui você poderia salvar o cadastro no backend/localStorage
     localStorage.setItem("nome", nome);
     sessionStorage.setItem("senha", senha);
 
-    login({ name: nome }); // Faz login automático
-    navigate("/FeedPost"); // Redireciona para a tela principal
+    login({ name: nome });
+    navigate("/FeedPost");
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h1>Registrar Conta</h1>
-        <div className="PreencherDados">
-          <input type="text" name="username" required />
-          <label id="LabelNome">Nome</label>
-        </div>
-        <div className="PreencherDados">
-          <input type="password" name="password" required />
-          <label id="LabelSenha">Senha</label>
-        </div>
-        <button type="submit">Criar Conta</button>
-        <button type="button" onClick={() => navigate("/LoginUser")}>
-          Já tem uma conta? Fazer login
-        </button>
-      </form>
-    </div>
+    <AuthForm
+      titulo="Criar Conta"
+      onSubmit={handleRegisterSubmit}
+      textoBotaoPrincipal="Criar Conta"
+      textoBotaoAlternativo="Já tem uma conta? Fazer login"
+      rotaBotaoAlternativo="/LoginUser"
+    />
   );
 }
 
