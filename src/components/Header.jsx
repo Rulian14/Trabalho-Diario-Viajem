@@ -42,13 +42,13 @@ function Header() {
               </h2>
               <div className="flex space-x-4">
                 <button
-                  className="p-1 rounded-md bg-violet-500 w-[80px] text-white hover:bg-violet-600 transition"
+                  className="p-1 rounded-md bg-violet-500 w-[80px] text-white hover:bg-violet-600 transition cursor-pointer"
                   onClick={() => navigate("/LoginUser")}
                 >
                   Login
                 </button>
                 <button
-                  className="p-1 rounded-md bg-violet-500 w-[100px] text-white hover:bg-violet-600 transition"
+                  className="p-1 rounded-md bg-violet-500 w-[100px] text-white hover:bg-violet-600 transition cursor-pointer"
                   onClick={() => navigate("/RegisterUser")}
                 >
                   Registre-se
