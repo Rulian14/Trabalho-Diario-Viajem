@@ -1,31 +1,76 @@
 import { useNavigate } from "react-router-dom";
+import { gerarCodigo } from "../utils/gerarCodigo.js";
+import { validarLogin } from "../utils/ValidaçãoFormulario.js";
 
 function AuthForm({
   titulo,
-  onSubmit,
   textoBotaoPrincipal,
   textoBotaoAlternativo,
   rotaBotaoAlternativo,
   mostrarBotaoVoltar = true,
+  isLogin = true,
+  login,
 }) {
   const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const nome = formData.get("username");
+    const senha = formData.get("password");
+
+    const resultado = validarLogin(nome, senha);
+
+    const labelNome = document.getElementById("Teste2");
+    const labelSenha = document.getElementById("Teste");
+
+    labelNome.textContent = resultado.nomeMensagem;
+    labelNome.style.color = resultado.nomeMensagem.includes("inválido")
+      ? "red"
+      : "green";
+
+    labelSenha.textContent = resultado.senhaMensagem;
+    labelSenha.style.color = resultado.senhaMensagem.includes("curta")
+      ? "red"
+      : "green";
+
+    if (!resultado.valido) return;
+
+    const codigo = gerarCodigo(nome, senha);
+
+    if (isLogin) {
+      const res = await fetch(
+        `http://localhost:3001/users?name=${nome}&codigo=${codigo}`
+      );
+      const users = await res.json();
+
+      if (users.length === 0) {
+        alert("Usuário ou senha incorretos.");
+        return;
+      }
+    } else {
+      const user = { name: nome, codigo };
+      await fetch("http://localhost:3001/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user),
+      });
+    }
+
+    login({ name: nome });
+    navigate("/MenuUser");
+  };
 
   return (
     <div className="h-screen w-screen bg-slate-600 flex items-center justify-center">
       <div className="bg-slate-700 p-8 rounded-lg shadow-lg w-full max-w-md">
-        <form onSubmit={onSubmit} className="flex flex-col space-y-4">
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
           <h1 className="text-2xl font-bold text-center text-white">
             {titulo}
           </h1>
 
           <div className="flex flex-col">
-            <label
-              htmlFor="username"
-              id="LabelNome"
-              className="text-sm text-white mb-1"
-            >
-              Nome:
-            </label>
             <input
               type="text"
               id="username"
@@ -33,16 +78,16 @@ function AuthForm({
               required
               className="border bg-white border-slate-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
+            <label
+              htmlFor="username"
+              id="Teste2"
+              className="text-sm text-white mt-1"
+            >
+              Nome
+            </label>
           </div>
 
           <div className="flex flex-col">
-            <label
-              htmlFor="password"
-              id="LabelSenha"
-              className="text-sm text-white mb-1"
-            >
-              Senha:
-            </label>
             <input
               type="password"
               id="password"
@@ -50,6 +95,13 @@ function AuthForm({
               required
               className="border bg-white border-slate-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
+            <label
+              htmlFor="password"
+              id="Teste"
+              className="text-sm text-white mt-1"
+            >
+              Senha
+            </label>
           </div>
 
           <button
