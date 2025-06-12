@@ -6,6 +6,7 @@ function Footer() {
           <h1 className="flex justify-center">
             Copyright &copy; 2025 Horizon Hues | Todos os direitos reservados
           </h1>
+          <button></button>
         </div>
       </div>
     </div>

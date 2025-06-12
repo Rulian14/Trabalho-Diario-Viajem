@@ -20,8 +20,29 @@ function Header() {
             />
           </div>
         </Link>
-
         {/* Ações */}
+        <div className="space-x-6 rounded-full p-4 bg-slate-800 flex">
+          <h1 className="w-[50px] p-1 font-bold text-white">Menu</h1>
+          <button
+            className="p-2 rounded-md bg-slate-600 text-white hover:bg-amber-300 hover:text-black"
+            onClick={() => navigate("/")}
+          >
+            Pagina Inicial
+          </button>
+          <button
+            className="p-2 rounded-md bg-slate-600 text-white hover:bg-amber-300 hover:text-black"
+            onClick={() => navigate("/FeedPost")}
+          >
+            Ver Diarios
+          </button>
+          <button
+            className="p-2 rounded-md bg-slate-600 text-white hover:bg-amber-300 hover:text-black transition"
+            onClick={() => navigate("/UploadDiary")}
+          >
+            Enviar Diário
+          </button>
+        </div>
+        {/* Login */}
         <div className="flex flex-col items-end space-y-2">
           {user ? (
             <>

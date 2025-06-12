@@ -1,11 +1,12 @@
-import Header from "../components/Header.jsx";
+import Layout from "../components/Layout.jsx";
 
 function FeedPost() {
   return (
     <div>
-      <Header />
-      <h1>Feed Post</h1>
-      <p>This is the content of the Feed Post page.</p>
+      <Layout>
+        <h1>Feed Post</h1>
+        <p>This is the content of the Feed Post page.</p>
+      </Layout>
     </div>
   );
 }
