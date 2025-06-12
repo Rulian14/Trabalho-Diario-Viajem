@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useAuth } from "../utils/AuthContext.jsx"; // importa o hook do Auth
+import { useAuth } from "../utils/AuthContext.jsx";
 import HHIconSemFundo from "../assets/HHIconSemFundo.png";
 
 function Header() {
   const navigate = useNavigate();
-  const { user, logout } = useAuth(); // pega o user e logout do contexto
+  const { user, logout } = useAuth();
 
   return (
     <header className="fixed top-0 left-0 w-full bg-slate-700 h-[110px] shadow-md z-50">

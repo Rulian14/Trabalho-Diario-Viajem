@@ -29,9 +29,8 @@ function LoginArea() {
 
     if (!resultado.valido) return;
 
-    // Simula salvar login no contexto e redireciona
     login({ name: nome });
-    navigate("/MenuUser"); // ou "/MenuUser", como preferir
+    navigate("/FeedPost");
   };
 
   return (

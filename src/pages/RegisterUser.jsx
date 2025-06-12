@@ -38,7 +38,7 @@ function RegisterUser() {
     sessionStorage.setItem("senha", senha);
 
     login({ name: nome }); // Faz login automático
-    navigate("/MenuUser"); // Redireciona para a tela principal
+    navigate("/FeedPost"); // Redireciona para a tela principal
   };
 
   return (
