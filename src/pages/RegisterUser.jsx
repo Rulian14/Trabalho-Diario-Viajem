@@ -2,12 +2,13 @@ import AuthForm from "../components/AuthForm";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../utils/AuthContext.jsx";
 import { validarLogin } from "../utils/ValidaçãoFormulario.js";
+import { gerarCodigo } from "../utils/gerarCodigo.js";
 
 function RegisterUser() {
   const navigate = useNavigate();
   const { login } = useAuth();
 
-  const handleRegisterSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const nome = formData.get("username");
@@ -25,11 +26,22 @@ function RegisterUser() {
 
     if (!resultado.valido) return;
 
-    localStorage.setItem("nome", nome);
-    sessionStorage.setItem("senha", senha);
+    const codigo = gerarCodigo(nome, senha);
+
+    const res = await fetch(`http://localhost:3001/users?name=${nome}`);
+    const users = await res.json();
+    if (users.length > 0) {
+      alert("Usuário já existe.");
+      return;
+    }
+    await fetch("http://localhost:3001/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: nome, codigo }),
+    });
 
     login({ name: nome });
-    navigate("/FeedPost");
+    navigate("/MenuUser");
   };
 
   return (
