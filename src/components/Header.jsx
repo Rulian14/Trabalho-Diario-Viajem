@@ -10,7 +10,6 @@ function Header() {
   return (
     <header className="fixed top-0 left-0 w-full bg-slate-700 h-[110px] shadow-md z-50">
       <div className="max-w-screen-xl mx-auto h-full px-4 flex items-center justify-between">
-        {/* Logo */}
         <Link to="/MenuUser" className="flex items-center cursor-pointer">
           <div className="flex items-center">
             <img
@@ -20,7 +19,7 @@ function Header() {
             />
           </div>
         </Link>
-        {/* Ações */}
+
         <div className="space-x-6 rounded-full p-4 bg-slate-800 flex">
           <h1 className="w-[50px] p-1 font-bold text-white">Menu</h1>
           <button
@@ -42,7 +41,7 @@ function Header() {
             Enviar Diário
           </button>
         </div>
-        {/* Login */}
+
         <div className="flex flex-col items-end space-y-2">
           {user ? (
             <>
@@ -72,7 +71,7 @@ function Header() {
                   className="p-1 rounded-md bg-violet-500 w-[100px] text-white hover:bg-violet-600 transition cursor-pointer"
                   onClick={() => navigate("/RegisterUser")}
                 >
-                  Registre-se
+                  SignUp
                 </button>
               </div>
             </>
