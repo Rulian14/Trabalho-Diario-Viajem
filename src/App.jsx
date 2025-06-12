@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Layout from "./components/Layout";
 import ImagemGlobo from "./assets/ImagemGlobo.png";
-import BotaoFeed from "./components/IrPraDashBoard.jsx";
+import IrFeedPost from "./components/IrFeedPost.jsx";
 
 function App() {
   return (
@@ -33,7 +33,7 @@ function App() {
                 />
               </div>
             </div>
-            <BotaoFeed />
+            <IrFeedPost />
           </div>
         </div>
       </Layout>
