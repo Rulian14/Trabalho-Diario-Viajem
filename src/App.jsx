@@ -2,18 +2,17 @@ import "./App.css";
 import Header from "./components/Header";
 import Layout from "./components/Layout";
 import ImagemGlobo from "./assets/ImagemGlobo.png";
+import BotaoFeed from "./components/IrPraDashBoard.jsx";
 
 function App() {
   return (
     <div>
       <Layout>
-        <div className="h-full bg-slate-600 flex justify-center">
-          <div className="h-[1000px] w-[850px] flex flex-col">
+        <div className="h-full bg-slate-600 flex justify-center ">
+          <div className="h-[80vh] w-[850px] flex flex-col">
             <h1 className="text-3xl p-4 font-bold mb-4 text-white">
               Seja Bem-Vindo ao Horizon Hues!
             </h1>
-
-            {/* Contêiner com texto e imagem lado a lado */}
             <div className="flex items-center gap-6 p-4">
               <p className="text-white max-w-[60%]">
                 🌍 <strong>Sobre a Horizon Hues</strong>
@@ -26,7 +25,6 @@ function App() {
                 inesquecível. Crie seu perfil, publique suas memórias e inspire
                 outros viajantes com suas paisagens favoritas. 🌅✈️📍
               </p>
-
               <div className="border-2 border-white flex justify-center items-center w-[250px] h-[250px] rounded-full overflow-hidden">
                 <img
                   src={ImagemGlobo}
@@ -35,6 +33,7 @@ function App() {
                 />
               </div>
             </div>
+            <BotaoFeed />
           </div>
         </div>
       </Layout>
