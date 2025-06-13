@@ -1,7 +1,7 @@
-import AuthForm from "../components/AuthForm";
 import { useAuth } from "../utils/AuthContext.jsx";
+import AuthForm from "../components/AuthForm";
 
-function LoginArea() {
+function LoginUser() {
   const { login } = useAuth();
 
   return (
@@ -16,4 +16,4 @@ function LoginArea() {
   );
 }
 
-export default LoginArea;
+export default LoginUser;
