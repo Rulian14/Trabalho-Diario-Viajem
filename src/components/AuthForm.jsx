@@ -42,7 +42,7 @@ function AuthForm({
     if (isLogin) {
       // LOGIN: verificar se usuário com esse nome + código existe
       const res = await fetch(
-        `http://localhost:3000/users?name=${nome}&codigo=${codigo}`
+        `http://localhost:3001/users?name=${nome}&codigo=${codigo}`
       );
       const users = await res.json();
 
@@ -52,7 +52,7 @@ function AuthForm({
       }
     } else {
       // REGISTER: verificar se o nome já está cadastrado
-      const checkRes = await fetch(`http://localhost:3000/users?name=${nome}`);
+      const checkRes = await fetch(`http://localhost:3001/users?name=${nome}`);
       const existingUsers = await checkRes.json();
 
       if (existingUsers.length > 0) {
@@ -62,7 +62,7 @@ function AuthForm({
 
       // Criar novo usuário
       const user = { name: nome, codigo };
-      await fetch("http://localhost:3000/users", {
+      await fetch("http://localhost:3001/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),
